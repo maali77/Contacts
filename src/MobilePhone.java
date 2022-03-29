@@ -4,9 +4,9 @@ public class MobilePhone {
     private String myNumber;
     private ArrayList<Contact> myContacts;
 
-    public MobilePhone(String myNumber){
+    public MobilePhone(String myNumber){ // constructor
         this.myNumber = myNumber;
-        this.myContacts = new ArrayList<Contact>();
+        this.myContacts = new ArrayList<Contact>(); //init arraylist
     }
     public boolean addNewContact(Contact contact){
         if(findContact(contact.getName()) >= 0){
@@ -32,11 +32,18 @@ public class MobilePhone {
     }
     private int findContact(String contactName){
         for(int i =0; i < this.myContacts.size(); i++){
-            Contact contact = this.myContacts.get(i);
+            Contact contact = this.myContacts.get(i); // if contact name = name entered return index
             if (contact.getName().equals(contactName)){
                 return i;
             }
         }
         return -1; // wasnt found
+    }
+
+    public String queryContact(Contact contact){
+        if(findContact(contact) >= 0){
+            return contact.getName();
+        }
+        return null;
     }
 }
